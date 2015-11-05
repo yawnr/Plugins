@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Transition &amp; Plugin!</title>
+  <style>
+
+  html, body, figure, div, ul, li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    font: inherit;
+    text-decoration: inherit;
+    text-align: inherit;
+    color: inherit;
+
+    background: transparent;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .group:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  body {
+    font-size: 30px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .wait-for-cat {
+
+  }
+
+  .wait-for-cat .window {
+    margin: 50px auto;
+    border: 10px solid black;
+    width: 200px;
+    overflow: hidden;
+  }
+
+  .wait-for-cat .list {
+    width: 1000px;
+    margin-left: 0;
+    transition: margin-left 1s linear;
+  }
+
+  .wait-for-cat .active .list {
+    margin-left: -800px;
+  }
+
+  .wait-for-cat li {
+    float: left;
+    padding: 20px;
+    width: 160px;
+    background: orange;
+  }
+
+  .wait-for-cat li:nth-child(odd) {
+    background: yellow;
+  }
+
+  .wait-for-cat .active-cat li:last-child {
+    background: blue;
+    color: white;
+  }
+
+  </style>
+</head>
+<body>
+
+  <figure class="wait-for-cat">
+
+    <div class="window">
+      <ul class="list group">
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Cat!</li>
+      </ul>
+    </div>
+
+    <button>GO, CAT, GO!</button>
+
+  </figure>
+
+
+
+  <figure class="wait-for-cat">
+
+    <div class="window">
+      <ul class="list group">
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Cat!</li>
+      </ul>
+    </div>
+
+    <button>GO, CAT, GO!</button>
+
+  </figure>
+
+
+
+  <figure class="wait-for-cat">
+
+    <div class="window">
+      <ul class="list group">
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Wait</li>
+        <li>Cat!</li>
+      </ul>
+    </div>
+
+    <button>GO, CAT, GO!</button>
+
+  </figure>
+
+
+<script src="jquery.js"></script>
+<script>
+
+// $(document).on("ready", function(){
+//
+//   $(".wait-for-cat button").on("click", function(e){
+//
+//     $(".wait-for-cat .window").toggleClass("active");
+//
+//   });
+//
+//   $(".wait-for-cat .list").on("transitionend", function(e){
+//
+//     $(".wait-for-cat .window").toggleClass("active");
+//
+//     $(".wait-for-cat .window").toggleClass("active-cat");
+//
+//   });
+//
+// });
+
+
+  (function(){
+
+    $.WaitCat = function($el) {
+      this.$el = $el;
+      this.bindEvents();
+    };
+
+    $.WaitCat.prototype.bindEvents = function(){
+      this.$el.find("button").on("click",
+              this.activateOnClick.bind(this));
+
+      this.$el.find(".list").on("transitionend",
+              this.activateCatOnClick.bind(this));
+    };
+
+    $.WaitCat.prototype.activateOnClick = function(e){
+      this.$el.find(".window").toggleClass("active");
+    };
+
+    $.WaitCat.prototype.activateCatOnClick = function(e){
+      this.$el.find(".window").toggleClass("active-cat");
+    };
+
+
+  })();
+
+
+  // $.fn.waitCatify = function(){
+  //   // debugger;
+  //   // this --> all wait for cats
+  //
+  //   this.each(function(index, element){
+  //     // debugger;
+  //     // element == this
+  //
+  //     new $.WaitCat($(element))
+  //   })
+  // };
+
+
+  $.fn.waitCatify = function(){
+    return this.each(function(){
+      new $.WaitCat($(this));
+    });
+  };
+
+  $(document).on("ready", function(){
+    $(".wait-for-cat").waitCatify();
+  });
+
+</script>
+</body>
+</html>

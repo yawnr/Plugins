@@ -1,0 +1,74 @@
+html, body, section, article,
+h1, h2, p, strong, em, ul, li, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+h1 {
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: left;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.carousel {
+  width: 600px;
+  position: relative;
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+  /*margin-left: -1200px;*/
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul > li {
+  float: left;
+  display: none;
+}
+
+ul > li.active {
+  display: block;
+  transition: left 500ms;
+}
+
+ul > li.right {
+  position: absolute;
+  left: 100%;
+  display:block;
+}
+
+ul > li.left {
+  position: absolute;
+  left: -100%;
+  display:block;
+}

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Kitten Carousel</title>
+    <script src="../jquery-plugins/jquery.js"></script>
+    <script src="./carousel.js"></script>
+    <link href="./carousel.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <figure class="carousel">
+      <ul class="items group">
+        <li>
+          <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg">
+        </li>
+
+        <li>
+          <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg">
+        </li>
+        <li>
+          <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg">
+        </li>
+        <li>
+          <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/140.jpg">
+        </li>
+        <li>
+          <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/96/140.jpg">
+        </li>
+      </ul>
+
+    <button class="slide-right">Prev</button>
+    <button class="slide-left">Next</button>
+
+    </figure>
+
+
+    <script>
+      $(function() {
+        $('.carousel').carousel();
+      })
+    </script>
+
+
+  </body>
+</html>
